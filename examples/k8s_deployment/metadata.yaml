@@ -1,0 +1,3 @@
+name: nginx-deployment
+labels:
+  app: nginx

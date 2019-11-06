@@ -1,0 +1,2 @@
+matchLabels:
+  app: nginx
