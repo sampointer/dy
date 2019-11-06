@@ -68,8 +68,10 @@ deployment.apps/nginx-deployment created (dry run)
 
 ## Installing
 ### Homebrew
-1. `brew tap sampointer/dy`
-1. `brew install dy`
+```
+brew tap sampointer/dy
+brew install dy
+```
 
 ### Manually
 Download the latest [release](https://github.com/sampointer/dy/releases) and unpack it into an appropriate place in your `${PATH}`.
