@@ -76,4 +76,4 @@ brew install dy
 ```
 
 ### Manually
-Download the latest [release](https://github.com/sampointer/dy/releases) and unpack it into an appropriate place in your `${PATH}`.
+Download the appropriate package for your distribution from the [releases](https://github.com/sampointer/dy/releases) page.
