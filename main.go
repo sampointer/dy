@@ -18,6 +18,7 @@ func main() {
 	err := dy.Parse(os.Args[1])
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "%v\n", err)
+		os.Exit(2)
 	} else {
 		fmt.Println(dy.Doc)
 	}
