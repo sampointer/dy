@@ -1,0 +1,2 @@
+Description: Availability Zone of the newly created EC2 instance
+Value: !GetAtt [EC2Instance, AvailabilityZone]

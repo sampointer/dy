@@ -8,6 +8,8 @@ Whilst this tool doesn't pretend to move the mountain it does try to nudge it ba
 
 Put simply, `dy` allows one to build a YAML document from a directory tree containing snippets of YAML. The aim is to make the document easier to reason about and maintain.
 
+It is useful everywhere complex YAML configuration is employed: CI pipelines, Cloudformation, Kubernetes, etc. See the [examples](https://github.com/sampointer/dy/tree/master/examples) for inspiration.
+
 ## Introducing Divvy Yaml
 > **divvy** */ˈdɪvi/* - To share out. *Informal, British* - A foolish or stupid person
 

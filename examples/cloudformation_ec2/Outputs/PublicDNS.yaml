@@ -1,0 +1,2 @@
+Description: Public DNSName of the newly created EC2 instance
+Value: !GetAtt [EC2Instance, PublicDnsName]
