@@ -1,4 +1,4 @@
-# dy [![Go Report Card](https://goreportcard.com/badge/github.com/sampointer/dy)](https://goreportcard.com/report/github.com/sampointer/dy) [![CircleCI](https://circleci.com/gh/sampointer/dy.svg?style=shield)](https://circleci.com/gh/sampointer/dy)
+# dy [![Go Report Card](https://goreportcard.com/badge/github.com/sampointer/dy)](https://goreportcard.com/report/github.com/sampointer/dy) [![CircleCI](https://circleci.com/gh/sampointer/dy.svg?style=shield)](https://circleci.com/gh/sampointer/dy) [![GoDoc](https://godoc.org/github.com/sampointer/dy?status.svg)](https://godoc.org/github.com/sampointer/dy)
 Construct YAML from a directory tree
 
 ## Description
