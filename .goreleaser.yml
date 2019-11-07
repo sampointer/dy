@@ -42,3 +42,14 @@ brews:
     description: "Construct YAML from a directory tree"
     install : |
       bin.install "dy"
+
+# Packages
+nfpms:
+  -
+    formats:
+      - deb
+      - rpm
+    vendor: "Sam Pointer"
+    homepage: "https://github.com/sampointer/dy"
+    maintainer: "Sam Pointer <sam@outsidethe.net>"
+    description: "Construct YAML from a directory tree"
