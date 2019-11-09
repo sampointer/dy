@@ -2,7 +2,7 @@
 Construct YAML from a directory tree
 
 ## Description
-The entire world seems to think declarative configuration is best represented as YAML. This is especially prevailant in the land of Kubernetes and related tools. Terrible ideas have a tendency to accumulate leading to [awful solutions](https://twitter.com/sam_pointer/status/1182321989895311362) to the wrong problems.
+The entire world seems to think declarative configuration is best represented as YAML. This is especially prevalent in the land of Kubernetes and related tools. Terrible ideas have a tendency to accumulate leading to [awful solutions](https://twitter.com/sam_pointer/status/1182321989895311362) to the wrong problems.
 
 Whilst this tool doesn't pretend to move the mountain it does try to nudge it back in the right direction.
 
