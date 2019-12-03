@@ -15,7 +15,7 @@ type DivvyYaml struct {
 // Parse populates the structure from the given path and options
 func (d *DivvyYaml) Parse(path string) error {
 	// create a closure containing the d.Doc. This will be passed to filepath.Walk
-        walkerfunc := func (path string, info os.FileInfo, err error) error {
+  walkerfunc := func (path string, info os.FileInfo, err error) error {
 		// Pass all errors back up the call chain
 		if err != nil {
 			return err
@@ -33,6 +33,7 @@ func (d *DivvyYaml) Parse(path string) error {
 			d.Doc += indentString(depth, key) + ":\n"
 			return nil
 		}
+
 		// A file has contents that exist under a key named after the file prefix
 		// unless the file name starts with an underscore, in which case no key
 		// is written
@@ -60,7 +61,7 @@ func (d *DivvyYaml) Parse(path string) error {
 		file.Close()
 
 		return scanner.Err()
-	}			// end of inner function definition
+	}  // end of inner function definition
 	
 	// Store the current working directory so we can get back.
 	cwd, err := os.Getwd()
