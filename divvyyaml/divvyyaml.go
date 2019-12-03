@@ -14,10 +14,56 @@ type DivvyYaml struct {
 
 // Parse populates the structure from the given path and options
 func (d *DivvyYaml) Parse(path string) error {
+	// create a closure containing the d.Doc. This will be passed to filepath.Walk
+        walkerfunc := func (path string, info os.FileInfo, err error) error {
+		// Pass all errors back up the call chain
+		if err != nil {
+			return err
+		}
 
-	// Store the current working directory
+		// Skip the root directory
+		if path == "." {
+			return nil
+		}
+
+		if info.IsDir() {
+			// A directory is a key
+			key := filepath.Base(path)
+			depth := directoryElements(path)
+			d.Doc += indentString(depth, key) + ":\n"
+			return nil
+		}
+		// A file has contents that exist under a key named after the file prefix
+		// unless the file name starts with an underscore, in which case no key
+		// is written
+		var key string
+		base := filepath.Base(path)
+		depth := directoryElements(path)
+
+		if strings.HasPrefix(base, "_") {
+			depth = depth - 1
+		} else {
+			key = strings.TrimSuffix(base, filepath.Ext(path)) + ":\n"
+		}
+
+		d.Doc += indentString(depth, key)
+
+		file, err := os.Open(path)
+		if err != nil {
+			return err
+		}
+
+		scanner := bufio.NewScanner(file)
+		for scanner.Scan() {
+			d.Doc += indentString(depth+1, scanner.Text()) + "\n"
+		}
+		file.Close()
+
+		return scanner.Err()
+	}			// end of inner function definition
+	
+	// Store the current working directory so we can get back.
 	cwd, err := os.Getwd()
-	defer os.Chdir(cwd)
 	if err != nil {
 		return err
 	}
@@ -28,71 +74,15 @@ func (d *DivvyYaml) Parse(path string) error {
 	if err != nil {
 		return err
 	}
+	defer os.Chdir(cwd)
 
 	// Since our cwd is where we need to be, walk the current directory
-	err = filepath.Walk(".", processWalk)
+	err = filepath.Walk(".", walkerfunc)
 	if err != nil {
 		return err
 	}
 
-	d.Doc = doc
 	return nil
-}
-
-var doc string // Constructed YAML document
-
-func processWalk(path string, info os.FileInfo, err error) error {
-	// Pass all errors back up the call chain
-	if err != nil {
-		return err
-	}
-
-	// Skip the root directory
-	if path == "." {
-		return nil
-	}
-
-	if info.IsDir() {
-		// A directory is a key
-		key := filepath.Base(path)
-		depth := directoryElements(path)
-		doc += indentString(depth, key) + ":\n"
-	} else {
-		// A file has contents that exist under a key named after the file prefix
-		// unless the file name starts with an underscore, in which case no key
-		// is written
-		var key string
-		var depth int
-
-		base := filepath.Base(path)
-		if strings.HasPrefix(base, "_") {
-			key = ""
-			depth = directoryElements(path) - 1
-		} else {
-			key = strings.TrimSuffix(base, filepath.Ext(path)) + ":\n"
-			depth = directoryElements(path)
-		}
-
-		doc += indentString(depth, key)
-
-		file, err := os.Open(path)
-		if err != nil {
-			return err
-		}
-		defer file.Close()
-
-		scanner := bufio.NewScanner(file)
-		for scanner.Scan() {
-			doc += indentString(depth+1, scanner.Text()) + "\n"
-		}
-
-		if err := scanner.Err(); err != nil {
-			return err
-		}
-
-	}
-
-	return err
 }
 
 // indentString returns the passed string prefixed with the specified number of double spaces
