@@ -35,7 +35,7 @@ func main() {
 			if multiDoc == true {
 				fmt.Println("---")
 			}
-			fmt.Println(dy.Doc)
+			fmt.Print(dy.Doc)
 		}
 	}
 }
