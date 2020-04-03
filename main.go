@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-	var dy divvy.DivvyYaml
 	var multiDoc bool
 
 	// Do the most basic argument parsing possible
@@ -26,6 +25,7 @@ func main() {
 			continue
 		}
 
+		var dy divvy.DivvyYaml
 		err := dy.Parse(dir)
 
 		if err != nil {
