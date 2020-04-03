@@ -68,6 +68,10 @@ $ dy k8s_deployment/ | kubectl apply --validate=true --dry-run=true -f -
 deployment.apps/nginx-deployment created (dry run)
 ```
 
+You may pass multiple directories as arguments and they will each be parsed and
+emitted as documents in their own right. In this way a single `dy` invocation
+can be used to produce a valid YAML stream.
+
 ## Installing
 ### Homebrew
 ```
