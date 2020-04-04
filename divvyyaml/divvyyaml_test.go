@@ -7,18 +7,21 @@ import (
 )
 
 func TestCorrectParse(t *testing.T) {
-	k8s_good, err := ioutil.ReadFile("../examples/k8s_deployment_output.yaml")
-	cfn_good, err := ioutil.ReadFile("../examples/cloudformation_ec2_output.yaml")
+	k8sGood, err := ioutil.ReadFile("../examples/k8s_deployment_output.yaml")
+	if err != nil {
+		t.Fatalf("Could not load test data: %v", err)
+	}
 
+	cfnGood, err := ioutil.ReadFile("../examples/cloudformation_ec2_output.yaml")
 	if err != nil {
 		t.Fatalf("Could not load test data: %v", err)
 	}
 
 	t.Run("k8s", func(t *testing.T) {
-		compareDocuments(t, "../examples/k8s_deployment", k8s_good)
+		compareDocuments(t, "../examples/k8s_deployment", k8sGood)
 	})
 	t.Run("cfn", func(t *testing.T) {
-		compareDocuments(t, "../examples/cloudformation_ec2", cfn_good)
+		compareDocuments(t, "../examples/cloudformation_ec2", cfnGood)
 	})
 }
 
