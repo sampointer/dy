@@ -70,7 +70,7 @@ deployment.apps/nginx-deployment created (dry run)
 
 You may pass multiple directories as arguments and they will each be parsed and
 emitted as documents in their own right. In this way a single `dy` invocation
-can be used to produce a valid YAML stream.
+can be used to produce a valid multi-document YAML stream.
 
 ## Installing
 ### Homebrew
