@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-// Represents a DivvyYaml document and its methods
+// DivvyYaml represents a document and its methods
 type DivvyYaml struct {
 	Doc string // The constructed YAML document
 }
