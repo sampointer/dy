@@ -29,7 +29,7 @@ changelog:
 # Homebrew
 brews:
   -
-    github:
+    tap:
       owner: sampointer
       name: homebrew-dy
 
